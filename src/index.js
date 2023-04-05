@@ -19,7 +19,6 @@ const tasksToDo = [
 ];
 
 const taskList = document.getElementById('task-list');
-
 const displayTasks = () => {
   tasksToDo.forEach((task) => {
     const taskBox = document.createElement('div');
