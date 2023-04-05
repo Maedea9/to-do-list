@@ -46,7 +46,7 @@ A tool that helps to organize your day
 
 ### Key Features <a name="key-features"></a>
 
-> An exercise to create an SPA website using ES6 syntax.
+> An exercise to create simple To-Do list using Webpack!
 
 - **[Webpack]**
 - **[JavaScript ES6]**
