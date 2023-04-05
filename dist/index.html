@@ -1,1 +1,35 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>To Do List</title><script defer="defer" src="main.js"></script></head><body><div class="main"><h1>To Do List</h1><hr><div class="task-container"><div class="task-header"><h2>Today's To Do</h2><i class="clockwise">&#8635;</i></div><div><form class="add-task-form"><input id="task-input" placeholder="Add to your list..."> <i id="add-icon" class="submit">&#8617;</i></form></div><div id="task-list" class="list-content"></div><div class="clear-tasks"><button id="clear-complete" type="button">Clear all completed</button></div></div></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>To Do List</title>
+<script defer src="index.js"></script></head>
+<body>
+    <div class="main">
+        <h1>To Do List</h1>
+        <hr>
+        <!--To do list-->
+        <div class="task-container">
+            <div class="task-header">
+                <h2>Today's To Do</h2>
+                <i class="clockwise">&#8635;</i>
+            </div>
+            <div>
+                <form class="add-task-form">
+                    <input id="task-input" type="text" placeholder="Add to your list...">
+                    <i id="add-icon" class="submit">&#8617;</i>
+            </div>
+            <div id="task-list" class="list-content">
+                <!--task list created dynamically-->
+            </div>
+                 </form>
+            <div class="clear-tasks">
+            <button id="clear-complete" type="button">Clear all completed</button>
+            </div>
+        </div>
+    </div>
+    <script type ="module" src="index.js"></script>
+</body>
+</html>
