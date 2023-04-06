@@ -44,9 +44,9 @@ const addTask = (taskInput, taskList) => {
 
 const updateTask = (oldTask, newTask) => {
   const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  const index = tasks.indexOf(oldTask);
+  const index = tasks.findIndex(task => task.description === oldTask);
   if (index !== -1) {
-    tasks[index] = newTask;
+    tasks[index].description = newTask;
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 };
@@ -72,7 +72,7 @@ window.addEventListener("load", () => {
     taskBox.classList = 'task-box-css';
     taskBox.innerHTML = ` <div class="task-activity">
                     <input type="checkbox" class="input-check">
-                    <input type="text" class="text-input" value="${task}">
+                    <input type="text" class="text-input" value="${task.description}">
                   </div>
                   <i class="trash-icon" id="delete-icon">&#x1F5D1;</i>
                   <i class="move-icon" id="order-icon">&#x22EE;</i>`;
@@ -84,7 +84,7 @@ window.addEventListener("load", () => {
     const textInput = taskBox.querySelector('.text-input');
     textInput.addEventListener('change', (e) => {
       const editedTask = e.target.value;
-      updateTask(task, editedTask);
+      updateTask(task.description, editedTask);
     });
   });
 });
