@@ -22,6 +22,7 @@ const addTask = (taskInput, taskList) => {
                     <input type="checkbox" class="input-check">
                     <input type="text" class="text-input" value="${task}">
                   </div>
+                  <i class="trash-icon" id="delete-icon">&#x1F5D1;</i>
                   <i class="move-icon" id="order-icon">&#x22EE;</i>`;
 
   // Append taskBox to taskList
@@ -58,7 +59,7 @@ addIcon.addEventListener("click", () => addTask(taskInput, taskList));
 
 taskInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
-    e.preventDefault();
+    e.preventDefault(); //prevents page to reload when enter is pressed
     addTask(taskInput, taskList);
   }
 });
@@ -73,6 +74,7 @@ window.addEventListener("load", () => {
                     <input type="checkbox" class="input-check">
                     <input type="text" class="text-input" value="${task}">
                   </div>
+                  <i class="trash-icon" id="delete-icon">&#x1F5D1;</i>
                   <i class="move-icon" id="order-icon">&#x22EE;</i>`;
 
     // Append taskBox to taskList
@@ -85,4 +87,20 @@ window.addEventListener("load", () => {
       updateTask(task, editedTask);
     });
   });
+});
+
+//Delete task //
+// Add event listener for task list
+taskList.addEventListener('click', (e) => {
+  if (e.target.classList.contains('trash-icon')) {
+    const taskBox = e.target.parentElement;
+
+    taskBox.remove();
+    // Get the index of the taskBox
+    const index = Array.from(taskList.children).indexOf(taskBox);
+    // Update the tasks array in localStorage by removing the task at the index
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    tasks.splice(index, 1);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
 });
