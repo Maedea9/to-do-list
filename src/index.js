@@ -1,22 +1,7 @@
 /*import './style.css';*/
 
-/*const tasksToDo = [
-  {
-    description: '',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: '',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: '',
-    completed: false,
-    index: 3,
-  },
-];*/
+const tasksToDo = [];
+
 
 //add new tasks//
 
@@ -66,8 +51,24 @@ const addTask = (taskInput, taskList) => {
   const task = taskInput.value;
   const newTask = document.createElement('div');
   newTask.textContent = task;
-  taskList.appendChild(newTask);
+
+  // Create taskBox element
+  const taskBox = document.createElement('div');
+  taskBox.classList = 'task-box-css';
+  taskBox.innerHTML = ` <div class="task-activity">
+                    <input type="checkbox" class="input-check">
+                    <input type="text" class="text-input" value="${task}">
+                  </div>
+                  <i class="move-icon" id="order-icon">&#x22EE;</i>`;
+
+  // Append taskBox to taskList
+  taskList.appendChild(taskBox);
+
   taskInput.value = "";
+
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  tasks.push(task);
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
 const addIcon = document.getElementById("add-icon");
@@ -78,8 +79,24 @@ addIcon.addEventListener("click", () => addTask(taskInput, taskList));
 
 taskInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
-    e.preventDefault();// prevents page reload
+    e.preventDefault();
     addTask(taskInput, taskList);
   }
 });
-addTask();
+
+window.addEventListener("load", () => {
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  tasks.forEach(task => {
+    // Create taskBox element
+    const taskBox = document.createElement('div');
+    taskBox.classList = 'task-box-css';
+    taskBox.innerHTML = ` <div class="task-activity">
+                    <input type="checkbox" class="input-check">
+                    <input type="text" class="text-input" value="${task}">
+                  </div>
+                  <i class="move-icon" id="order-icon">&#x22EE;</i>`;
+
+    // Append taskBox to taskList
+    taskList.appendChild(taskBox);
+  });
+});
