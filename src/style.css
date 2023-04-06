@@ -66,6 +66,10 @@ h1 {
   cursor: pointer;
 }
 
+.trash-icon {
+  cursor: pointer;
+}
+
 .clear-tasks {
   display: flex;
   justify-content: center;
