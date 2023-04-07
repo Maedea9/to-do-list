@@ -1,3 +1,4 @@
+const taskList = document.getElementById('taskList');
 export const addTask = (taskInput, taskList) => {
   const task = taskInput.value;
   const taskId = Date.now();
@@ -8,7 +9,7 @@ export const addTask = (taskInput, taskList) => {
     id: taskId,
     description: task,
     completed: false,
-    index: taskList.childElementCount + 1
+    index: taskList.childElementCount + 1,
   };
 
   // Create taskBox element
@@ -25,23 +26,16 @@ export const addTask = (taskInput, taskList) => {
   // Append taskBox to taskList
   taskList.appendChild(taskBox);
 
-  //add event listener for editing a task//
-  const textInput = taskBox.querySelector('.text-input');
-  textInput.addEventListener('change', (e) => {
-    const editedTask = e.target.value;
-    updateTask(task, editedTask);
-  });
-
-  taskInput.value = "";
+  taskInput.value = '';
 
   const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  tasks.push(taskObject); //push taskObject to task array
+  tasks.push(taskObject); // push taskObject to task array
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
 export const updateTask = (oldTask, newTask) => {
   const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  const index = tasks.findIndex(task => task.description === oldTask);
+  const index = tasks.findIndex((task) => task.description === oldTask);
   if (index !== -1) {
     tasks[index].description = newTask;
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -50,7 +44,7 @@ export const updateTask = (oldTask, newTask) => {
 
 export const loadTasks = () => {
   const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  tasks.forEach(task => {
+  tasks.forEach((task) => {
     const taskBox = document.createElement('div');
     taskBox.classList = 'task-box-css';
     taskBox.innerHTML = ` <div class="task-activity">
@@ -71,13 +65,13 @@ export const loadTasks = () => {
     });
   });
 };
-
+  //delete//
 export const deleteTask = (index) => {
   const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
   tasks.splice(index, 1);
   localStorage.setItem('tasks', JSON.stringify(tasks));
   const taskBoxes = document.getElementsByClassName('task-box-css');
-  for (let i = 0; i < taskBoxes.length; i++) {
+  for (let i = 0; i < taskBoxes.length; i += 1) {
     taskBoxes[i].dataset.index = i;
   }
 };
