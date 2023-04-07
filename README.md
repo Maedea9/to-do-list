@@ -1,8 +1,11 @@
-# to-do-list
-A tool that helps to organize your day
+<a name="readme-top"></a>
+
 <div align="center">
-  
-  <h3><b>To-Do List</b></h3>
+
+  <h2><b>ToDo List</b></h2>
+   <h3><b>Readme</b></h3>
+
+</div>
 
 </div>
 
@@ -27,7 +30,7 @@ A tool that helps to organize your day
 
 # 📖 To-Do-List <a name="about-project"></a>
 
-**[To-Do-List]** Welcome to this simple tool that helps to organize your day!
+**[To-Do-List]** Welcome to my To-Do List. A simple app that will help you organize your day!
 
 ## 🛠 Built With <a name="built-with"></a>
 
