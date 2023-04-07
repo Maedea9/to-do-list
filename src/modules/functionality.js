@@ -1,9 +1,11 @@
 export const addTask = (taskInput, taskList) => {
   const task = taskInput.value;
+  const taskId = Date.now();
   const newTask = document.createElement('div');
   newTask.textContent = task;
 
   const taskObject = {
+    id: taskId,
     description: task,
     completed: false,
     index: taskList.childElementCount + 1
@@ -12,6 +14,7 @@ export const addTask = (taskInput, taskList) => {
   // Create taskBox element
   const taskBox = document.createElement('div');
   taskBox.classList = 'task-box-css';
+  taskBox.dataset.id = taskId;
   taskBox.innerHTML = ` <div class="task-activity">
                     <input type="checkbox" class="input-check">
                     <input type="text" class="text-input" value="${task}">
@@ -73,4 +76,8 @@ export const deleteTask = (index) => {
   const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
   tasks.splice(index, 1);
   localStorage.setItem('tasks', JSON.stringify(tasks));
+  const taskBoxes = document.getElementsByClassName('task-box-css');
+  for (let i = 0; i < taskBoxes.length; i++) {
+    taskBoxes[i].dataset.index = i;
+  }
 };

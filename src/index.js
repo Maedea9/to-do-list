@@ -26,11 +26,10 @@ window.addEventListener("load", () => {
 taskList.addEventListener('click', (e) => {
   if (e.target.classList.contains('trash-icon')) {
     const taskBox = e.target.parentElement;
-
+    const taskId = taskBox.dataset.id;
     taskBox.remove();
 
-    const index = Array.from(taskList.children). indexOf(taskBox);
-    deleteTask(index);
+    deleteTask(taskId);
   }
 });
 
