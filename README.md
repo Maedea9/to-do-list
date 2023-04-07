@@ -49,7 +49,9 @@ A tool that helps to organize your day
 > An exercise to create simple To-Do list using Webpack!
 
 - **[Webpack]**
-- **[JavaScript ES6]**
+- **[JavaScript ES6 Syntax]**
+- **[Modular JavaScript]**
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -107,7 +109,7 @@ GitHub pages.
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- **-Adding JavaScript functionality** : Adding functionality to buttons.
+- **-Adding JavaScript interactivity** : Adding functionality to buttons.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
