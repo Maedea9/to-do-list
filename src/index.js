@@ -1,4 +1,4 @@
-/* import './style.css'; */
+import './style.css';
 import {
   addTask, updateTask, deleteTask, loadTasks,
 } from './modules/functionality.js';
