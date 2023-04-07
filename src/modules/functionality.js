@@ -65,7 +65,7 @@ export const loadTasks = () => {
     });
   });
 };
-  //delete//
+// delete//
 export const deleteTask = (index) => {
   const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
   tasks.splice(index, 1);
