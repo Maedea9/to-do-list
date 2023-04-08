@@ -62,6 +62,14 @@ h1 {
   padding-bottom: 1%;
 }
 
+.submit {
+  cursor: pointer;
+}
+
+.trash-icon {
+  cursor: pointer;
+}
+
 .clear-tasks {
   display: flex;
   justify-content: center;

@@ -1,8 +1,11 @@
-# to-do-list
-A tool that helps to organize your day
+<a name="readme-top"></a>
+
 <div align="center">
-  
-  <h3><b>To-Do List</b></h3>
+
+  <h2><b>ToDo List</b></h2>
+   <h3><b>Readme</b></h3>
+
+</div>
 
 </div>
 
@@ -27,7 +30,7 @@ A tool that helps to organize your day
 
 # 📖 To-Do-List <a name="about-project"></a>
 
-**[To-Do-List]** Welcome to this simple tool that helps to organize your day!
+**[To-Do-List]** Welcome to my To-Do List. A simple app that will help you organize your day!
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -49,7 +52,9 @@ A tool that helps to organize your day
 > An exercise to create simple To-Do list using Webpack!
 
 - **[Webpack]**
-- **[JavaScript ES6]**
+- **[JavaScript ES6 Syntax]**
+- **[Modular JavaScript]**
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -107,7 +112,7 @@ GitHub pages.
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- **-Adding JavaScript functionality** : Adding functionality to buttons.
+- **-Adding JavaScript interactivity** : Adding functionality to buttons.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
