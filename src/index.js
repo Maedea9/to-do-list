@@ -1,4 +1,4 @@
-/* import './style.css'; */
+import './style.css';
 import {
   renderTasks, addTask,
 } from './modules/functionality.js';
