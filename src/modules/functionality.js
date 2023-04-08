@@ -15,6 +15,20 @@ const renderTasks = (tasks, taskList) => {
                   <i class="move-icon" id="order-icon">&#x22EE;</i>`;
     taskBox.dataset.taskObject = JSON.stringify(taskObject);
     taskList.appendChild(taskBox);
+
+    const checkbox = taskBox.querySelector('.input-check');
+    checkbox.addEventListener('click', (e) => {
+      const taskBox = e.target.parentElement.parentElement;
+      const taskObject = JSON.parse(taskBox.dataset.taskObject);
+      if (e.target.checked) {
+        taskObject.completed = true; // Marcar como completado
+      } else {
+        taskObject.completed = false; // Marcar como no completado
+      }
+    
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      localStorage.setItem(taskObject.id, JSON.stringify(taskObject));
+    });
   });
 };
 

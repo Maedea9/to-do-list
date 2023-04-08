@@ -1,7 +1,9 @@
-import './style.css';
+/*import './style.css';*/
 import {
   renderTasks, addTask,
 } from './modules/functionality.js';
+
+// import {ToDo} from './modules/interactivity.js';
 
 // const tasksToDo = [];
 
@@ -38,3 +40,4 @@ taskList.addEventListener('click', (e) => {
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   }
 });
+

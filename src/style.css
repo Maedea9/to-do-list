@@ -84,3 +84,7 @@ h1 {
   font-size: 1em;
   cursor: pointer;
 }
+
+.strike-through {
+  text-decoration: line-through;
+}
