@@ -17,15 +17,22 @@ const renderTasks = (tasks, taskList) => {
     taskList.appendChild(taskBox);
 
     const checkbox = taskBox.querySelector('.input-check');
+    // read checkbox value from the localStorage
+    const storedTask = JSON.parse(localStorage.getItem(taskObject.id));
+    if (storedTask && storedTask.completed) {
+      checkbox.checked = true;
+    }
+
+    
     checkbox.addEventListener('click', (e) => {
       const taskBox = e.target.parentElement.parentElement;
       const taskObject = JSON.parse(taskBox.dataset.taskObject);
       if (e.target.checked) {
-        taskObject.completed = true; // Marcar como completado
+        taskObject.completed = true; // Marks as completed
       } else {
-        taskObject.completed = false; // Marcar como no completado
+        taskObject.completed = false; // Marks as not completed
       }
-    
+
       localStorage.setItem('tasks', JSON.stringify(tasks));
       localStorage.setItem(taskObject.id, JSON.stringify(taskObject));
     });
@@ -79,6 +86,7 @@ const addTask = (taskInput, taskList) => {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
+
 export {
-  renderTasks, addTask, updateTask,
+  renderTasks, addTask,
 };

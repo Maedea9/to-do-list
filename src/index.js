@@ -1,9 +1,9 @@
-/*import './style.css';*/
+import './style.css';
 import {
   renderTasks, addTask,
 } from './modules/functionality.js';
 
-// import {ToDo} from './modules/interactivity.js';
+// import {clearAll} from './modules/interactivity.js';
 
 // const tasksToDo = [];
 
@@ -20,7 +20,7 @@ taskInput.addEventListener('keypress', (e) => {
   }
 });
 
-// Fetch tasks from localStorage on page load
+// get tasks from localStorage on page load
 window.onload = () => {
   const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
   renderTasks(tasks, taskList);
