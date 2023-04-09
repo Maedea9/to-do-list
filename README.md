@@ -112,7 +112,8 @@ GitHub pages.
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- **-Adding JavaScript interactivity** : Adding functionality to buttons.
+- **-Adding transitions** : Adding styles.
+- **Adding drag and drop** : Adding drag and drop to order your list.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -128,7 +129,7 @@ If you like this project you can follow my work through my social networks.
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank Microverse, my Coding partners, Standup Team and Morning Sessions Team for supporting me.
+I would like to thank Microverse, my Coding partners, Standup Team, Morning Sessions Team and my friend @danifromecuador for supporting me.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
