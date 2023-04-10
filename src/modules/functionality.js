@@ -33,6 +33,7 @@ const renderTasks = (tasks, taskList) => {
         taskObject.completed = false; // Marks as not completed
       }
 
+    
       localStorage.setItem('tasks', JSON.stringify(tasks));
       localStorage.setItem(taskObject.id, JSON.stringify(taskObject));
     });

@@ -1,4 +1,4 @@
-import './style.css';
+// import './style.css';
 import {
   renderTasks, addTask,
 } from './modules/functionality.js';
@@ -30,7 +30,7 @@ window.onload = () => {
 // Add event listener for task list
 taskList.addEventListener('click', (e) => {
   if (e.target.classList.contains('trash-icon')) {
-    const taskBox = e.target.parentElement;
+    const taskBox = e.target.parentElement;z
 
     taskBox.remove();
     const taskObject = JSON.parse(taskBox.dataset.taskObject);
@@ -40,4 +40,26 @@ taskList.addEventListener('click', (e) => {
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   }
 });
+
+const clearAllCompleted = () => {
+  console.log('Ejecutando clearAllCompleted()ssssss');
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  for (let i = 0; i < tasks.length; i+=1) {
+    if (tasks[i].completed) {
+      tasks.splice(i, 1);
+      i -= 1;
+    }
+  }
+  for (let i = 1; i <= tasks.length; i+= 1) {
+    tasks[i - 1].id = i;
+  }
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+};
+
+const clearButton = document.getElementById('clear-complete');
+clearButton.addEventListener('click', () => {
+  console.log('sdsds');
+  clearAllCompleted();
+});
+
 
