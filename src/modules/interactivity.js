@@ -1,18 +1,14 @@
-// CLEAR ALL COMPLETED//
+// // CLEAR ALL COMPLETED//
+
 const clearAllCompleted = () => {
-  const toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
-  for (let i = 0; i < toDoArray.length; i += 1) {
-    if (toDoArray[i].completed) {
-      toDoArray.splice(i, 1);
-      i -= 1;
-    }
-  }
-  for (let i = 1; i <= toDoArray.length; i += 1) {
-    toDoArray[i - 1].index = i;
-  }
+  let toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
+  toDoArray = toDoArray.filter((task) => !task.completed);
+  toDoArray = toDoArray.map((task, index) => {
+    task.index = index + 1;
+    return task;
+  });
   localStorage.setItem('toDoArray', JSON.stringify(toDoArray));
 };
-
 /// EDIT TASKS //////
 
 const editTask = (index) => {
