@@ -1,70 +1,75 @@
-// Function to render tasks on the page
-const renderTasks = (tasks, taskList) => {
-  // Clear existing tasks
-  taskList.innerHTML = '';
+/// RENDER TASKS///
 
+const taskList = document.getElementById('taskList');
+
+const renderTasks = () => {
+  const toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
+  taskList.innerHTML = '';
   // Loop through tasks and create taskBox element for each task
-  tasks.forEach((taskObject) => {
+  toDoArray.forEach((task) => {
     const taskBox = document.createElement('div');
     taskBox.classList = 'task-box-css';
+    let taskCompleted = '';
+    if (task.completed) taskCompleted = 'checked';
     taskBox.innerHTML = ` <div class="task-activity">
-                    <input type="checkbox" class="input-check">
-                    <input type="text" class="text-input" value="${taskObject.description}">
+                    <input type="checkbox" class="input-check" ${taskCompleted}>
+                    <input type="text" class="text-input" value="${task.description}">
                   </div>
                   <i class="trash-icon" id="delete-icon">&#x1F5D1;</i>
                   <i class="move-icon" id="order-icon">&#x22EE;</i>`;
-    taskBox.dataset.taskObject = JSON.stringify(taskObject);
     taskList.appendChild(taskBox);
+
+    // COMPLETED TASKS//
+    const checkbox = taskBox.querySelector('.input-check');
+    checkbox.addEventListener('click', (e) => {
+      const taskBox = e.target.parentElement.parentElement;
+      const taskIndex = Array.from(taskBox.parentElement.children).indexOf(taskBox);
+      const toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
+      toDoArray[taskIndex].completed = e.target.checked;
+      localStorage.setItem('toDoArray', JSON.stringify(toDoArray));
+    });
   });
 };
+renderTasks();
 
-const updateTask = (oldTask, newTask) => {
-  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  const index = tasks.findIndex((task) => task.description === oldTask);
-  if (index !== -1) {
-    tasks[index].description = newTask;
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+// ADD TASKS//
+
+const newTask = document.querySelector('.new-task');
+const addTask = () => {
+  if (newTask.value !== '') {
+    const toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
+    toDoArray.push({ completed: false, description: newTask.value, id: Date.now() });
+    for (let i = 1; i <= toDoArray.length; i += 1) {
+      toDoArray[i - 1].index = i;
+    }
+    localStorage.setItem('toDoArray', JSON.stringify(toDoArray));
+    newTask.value = '';
+    renderTasks(); //
   }
 };
 
-// add new tasks//
-const addTask = (taskInput, taskList) => {
-  const task = taskInput.value;
+// DELETE TASKS//
 
-  const taskObject = {
-    description: task,
-    completed: false,
-    id: Date.now(),
-  };
+const deleteTask = (index) => {
+  const toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
+  toDoArray.splice(index, 1);
+  for (let i = 0; i < toDoArray.length; i += 1) {
+    toDoArray[i].index = i;
+  }
+  localStorage.setItem('toDoArray', JSON.stringify(toDoArray));
+};
 
-  // Create taskBox element
-  const taskBox = document.createElement('div');
-  taskBox.classList = 'task-box-css';
-  taskBox.innerHTML = ` <div class="task-activity">
-                    <input type="checkbox" class="input-check">
-                    <input type="text" class="text-input" value="${task}">
-                  </div>
-                  <i class="trash-icon" id="delete-icon">&#x1F5D1;</i>
-                  <i class="move-icon" id="order-icon">&#x22EE;</i>`;
+/// EDIT TASKS //////
 
-  // Append taskBox to taskList
-  taskBox.dataset.taskObject = JSON.stringify(taskObject);
-  taskList.appendChild(taskBox);
-
-  // add event listener for editing a task//
-  const textInput = taskBox.querySelector('.text-input');
-  textInput.addEventListener('change', (e) => {
-    const editedTask = e.target.value;
-    updateTask(taskObject, editedTask);
+const editTask = (index) => {
+  const toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
+  const textInputs = document.querySelectorAll('.text-input');
+  textInputs[index].addEventListener('change', () => {
+    toDoArray[index].description = textInputs[index].value;
+    localStorage.setItem('toDoArray', JSON.stringify(toDoArray));
   });
-
-  taskInput.value = '';
-
-  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  tasks.push(taskObject); // push taskObject to task array
-  localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
 export {
-  renderTasks, addTask, updateTask,
+  addTask, renderTasks, deleteTask, editTask,
 };

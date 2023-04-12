@@ -1,40 +1,60 @@
 import './style.css';
+
 import {
-  renderTasks, addTask,
+  addTask, renderTasks, deleteTask,
 } from './modules/functionality.js';
 
-// const tasksToDo = [];
+import { clearAllCompleted, editTask } from './modules/interactivity.js';
 
-const addIcon = document.getElementById('add-icon');
+// ADD TASKS//
+
+const addButton = document.querySelector('.submit'); // clicking add button
+addButton.addEventListener('click', () => {
+  addTask();
+  // renderTasks();
+});
+
 const taskInput = document.getElementById('taskInput');
-const taskList = document.getElementById('taskList');
-
-addIcon.addEventListener('click', () => addTask(taskInput, taskList));
-
 taskInput.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     e.preventDefault(); // prevents page to reload when enter is pressed
-    addTask(taskInput, taskList);
+    addTask();
+    // renderTasks();
   }
 });
 
-// Fetch tasks from localStorage on page load
-window.onload = () => {
-  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  renderTasks(tasks, taskList);
-};
+renderTasks();
 
-// Delete task //
-// Add event listener for task list
-taskList.addEventListener('click', (e) => {
-  if (e.target.classList.contains('trash-icon')) {
-    const taskBox = e.target.parentElement;
+// DELETE TASKS//
 
-    taskBox.remove();
-    const taskObject = JSON.parse(taskBox.dataset.taskObject);
-    const taskId = taskObject.id;
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    const updatedTasks = tasks.filter((task) => task.id !== taskId);
-    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+const listContainer = document.querySelector('.list-content');
+
+listContainer.addEventListener('click', (event) => {
+  const removeTask = event.target.closest('.trash-icon');
+  if (removeTask) {
+    const trashIcons = listContainer.querySelectorAll('.trash-icon');
+    const index = Array.from(trashIcons).indexOf(removeTask);
+    deleteTask(index);
+    renderTasks();
   }
+});
+
+// EDIT TASKS //
+
+// add event listener for editing a task//
+listContainer.addEventListener('click', (event) => {
+  const textInput = event.target.closest('.text-input');
+  if (textInput) {
+    const textInputs = listContainer.querySelectorAll('.text-input');
+    const index = Array.from(textInputs).indexOf(textInput);
+    editTask(index);
+  }
+});
+
+// CLEAR ALL COMPLETED //
+
+const clearButton = document.getElementById('clear-complete');
+clearButton.addEventListener('click', () => {
+  clearAllCompleted();
+  renderTasks();
 });
