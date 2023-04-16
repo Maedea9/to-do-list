@@ -7,13 +7,14 @@
 }
 
 body {
-  background-color: rgb(243, 243, 243);
+  background-color: #dee2e6;
 }
 
 h1 {
   font-size: 30px;
   text-align: center;
   margin-bottom: 2%;
+  color: #0d1b2a;
 }
 
 .task-container {
@@ -21,12 +22,17 @@ h1 {
   flex-direction: column;
   align-content: center;
   justify-content: center;
-  width: 50%;
-  margin-left: 35%;
+  width: 35%;
+  margin-left: 31%;
   background-color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   padding: 1%;
+  color: #0d1b2a;
+}
+
+.new-task {
+  width: 70%;
 }
 
 .task-header {
@@ -50,6 +56,7 @@ h1 {
   display: flex;
   flex-direction: column;
   border-bottom: 1px #ddd solid;
+  width: 100%;
   margin-bottom: 2%;
   padding-bottom: 1%;
 }
@@ -60,6 +67,14 @@ h1 {
   border-bottom: 1px #ddd solid;
   margin-bottom: 2.5%;
   padding-bottom: 1%;
+}
+
+.task-activity {
+  width: 100%;
+}
+
+.text-input {
+  width: 70%;
 }
 
 .submit {
@@ -80,11 +95,9 @@ h1 {
   height: 40px;
   outline: none;
   border: none;
-  background-color: #f1f2f5;
+  background-color: #778da9;
+  padding-inline: 2px;
   font-size: 1em;
   cursor: pointer;
-}
-
-.strike-through {
-  text-decoration: line-through;
+  color: #0d1b2a;
 }
