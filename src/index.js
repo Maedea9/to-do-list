@@ -58,3 +58,4 @@ clearButton.addEventListener('click', () => {
   clearAllCompleted();
   renderTasks();
 });
+
