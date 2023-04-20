@@ -1,9 +1,8 @@
 /// RENDER TASKS///
 
-
 const taskList = document.getElementById('taskList');
 
-  export const renderTasks = () => {
+export const renderTasks = () => {
   const toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
   if (!taskList) {
     return;
@@ -38,7 +37,7 @@ renderTasks();
 
 // ADD TASKS//
 // const newTask = document.querySelector('.new-task');
-  export const addTask = () => {
+export const addTask = () => {
   const newTask = document.querySelector('.new-task');
   if (newTask.value !== '') {
     const toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
@@ -50,8 +49,7 @@ renderTasks();
     newTask.value = '';
     renderTasks(); //
   }
-}; 
-
+};
 
 // DELETE TASKS//
 
@@ -66,7 +64,7 @@ export const deleteTask = (index) => {
 
 /// EDIT TASKS //////
 
-  export const editTask = (index) => {
+export const editTask = (index) => {
   const toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
   const textInputs = document.querySelectorAll('.text-input');
   textInputs[index].addEventListener('change', () => {
