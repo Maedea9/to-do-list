@@ -2,8 +2,11 @@
 
 const taskList = document.getElementById('taskList');
 
-const renderTasks = () => {
+export const renderTasks = () => {
   const toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
+  if (!taskList) {
+    return;
+  }
   taskList.innerHTML = '';
   // Loop through tasks and create taskBox element for each task
   toDoArray.forEach((task) => {
@@ -33,9 +36,8 @@ const renderTasks = () => {
 renderTasks();
 
 // ADD TASKS//
-
-const newTask = document.querySelector('.new-task');
-const addTask = () => {
+export const addTask = () => {
+  const newTask = document.querySelector('.new-task');
   if (newTask.value !== '') {
     const toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
     toDoArray.push({ completed: false, description: newTask.value, id: Date.now() });
@@ -50,7 +52,7 @@ const addTask = () => {
 
 // DELETE TASKS//
 
-const deleteTask = (index) => {
+export const deleteTask = (index) => {
   const toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
   toDoArray.splice(index, 1);
   for (let i = 0; i < toDoArray.length; i += 1) {
@@ -61,15 +63,11 @@ const deleteTask = (index) => {
 
 /// EDIT TASKS //////
 
-const editTask = (index) => {
+export const editTask = (index) => {
   const toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
   const textInputs = document.querySelectorAll('.text-input');
   textInputs[index].addEventListener('change', () => {
     toDoArray[index].description = textInputs[index].value;
     localStorage.setItem('toDoArray', JSON.stringify(toDoArray));
   });
-};
-
-export {
-  addTask, renderTasks, deleteTask, editTask,
 };
