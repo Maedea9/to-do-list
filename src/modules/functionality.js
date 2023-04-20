@@ -36,7 +36,6 @@ export const renderTasks = () => {
 renderTasks();
 
 // ADD TASKS//
-// const newTask = document.querySelector('.new-task');
 export const addTask = () => {
   const newTask = document.querySelector('.new-task');
   if (newTask.value !== '') {
@@ -72,7 +71,3 @@ export const editTask = (index) => {
     localStorage.setItem('toDoArray', JSON.stringify(toDoArray));
   });
 };
-
-// export {
-//   addTask, renderTasks, deleteTask, editTask,
-// };

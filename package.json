@@ -4,7 +4,8 @@
   "description": "a tool that helps to organize your day",
   "private": true,
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
+    "watch": "jest --watch *.js",
     "build": "webpack"
   },
   "repository": {
