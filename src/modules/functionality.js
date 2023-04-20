@@ -1,9 +1,13 @@
 /// RENDER TASKS///
 
+
 const taskList = document.getElementById('taskList');
 
   const renderTasks = () => {
   const toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
+  if (!taskList) {
+    return;
+  }
   taskList.innerHTML = '';
   // Loop through tasks and create taskBox element for each task
   toDoArray.forEach((task) => {
@@ -33,9 +37,9 @@ const taskList = document.getElementById('taskList');
 renderTasks();
 
 // ADD TASKS//
-
-const newTask = document.querySelector('.new-task');
- export const addTask = () => {
+// const newTask = document.querySelector('.new-task');
+  export const addTask = () => {
+  const newTask = document.querySelector('.new-task');
   if (newTask.value !== '') {
     const toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
     toDoArray.push({ completed: false, description: newTask.value, id: Date.now() });
@@ -46,7 +50,8 @@ const newTask = document.querySelector('.new-task');
     newTask.value = '';
     renderTasks(); //
   }
-};
+}; 
+
 
 // DELETE TASKS//
 

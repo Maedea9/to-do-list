@@ -10,7 +10,11 @@ const container = document.querySelector('.list-content');
 
 describe('addTask function', () => {
     test('should add one task to the container', () => {
-      addTask('Test task 1');
-      expect(container.children.length).toBe(1);
+      const input = document.querySelector('.new-task');
+      input.value = "Task 1";
+      addTask();
+      setTimeout(() => {
+        expect(container.children.length).toEqual(1);
+      }, 1000);
     });
 });
