@@ -3,7 +3,7 @@
 
 const taskList = document.getElementById('taskList');
 
-  const renderTasks = () => {
+  export const renderTasks = () => {
   const toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
   if (!taskList) {
     return;
@@ -66,7 +66,7 @@ export const deleteTask = (index) => {
 
 /// EDIT TASKS //////
 
-  const editTask = (index) => {
+  export const editTask = (index) => {
   const toDoArray = JSON.parse(localStorage.getItem('toDoArray')) || [];
   const textInputs = document.querySelectorAll('.text-input');
   textInputs[index].addEventListener('change', () => {
