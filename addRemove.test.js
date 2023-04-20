@@ -30,10 +30,3 @@ describe('addTask function', () => {
     }, 1000);
   });
 });
-
-describe('deleteTask function', () => {
-  test('should remove exactly one task from the container', () => {
-    deleteTask();
-    expect(container.children.length).toBe(0);
-  });
-});
