@@ -14,12 +14,14 @@ export const renderTasks = () => {
     taskBox.classList = 'task-box-css';
     let taskCompleted = '';
     if (task.completed) taskCompleted = 'checked';
-    taskBox.innerHTML = ` <div class="task-activity">
-                    <input type="checkbox" class="input-check" ${taskCompleted}>
-                    <input type="text" class="text-input" value="${task.description}">
-                  </div>
-                  <i class="trash-icon" id="delete-icon">&#x1F5D1;</i>
-                  <i class="move-icon" id="order-icon">&#x22EE;</i>`;
+    taskBox.innerHTML = `
+      <div class="task-activity">
+        <input type="checkbox" class="input-check" ${taskCompleted}>
+        <input type="text" class="text-input" value="${task.description}">
+      </div>
+      <i class="trash-icon" id="delete-icon">&#x1F5D1;</i>
+      <i class="move-icon" id="order-icon">&#x22EE;</i>
+    `;
     taskList.appendChild(taskBox);
 
     // COMPLETED TASKS//
