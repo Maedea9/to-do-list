@@ -3,6 +3,7 @@
  */
 
 import { clearAllCompleted } from './src/modules/interactivity.js';
+import { renderTasks } from './src/modules/functionality.js';
 
 describe('clearAllCompleted', () => {
   it('The clearAllCompleted function updates the task matrix correctly.', () => {
@@ -61,7 +62,7 @@ describe('renderTasks', () => {
         const toDoArray = JSON.parse(localStorage.getItem('toDoArray'));
         expect(toDoArray[0].completed).toBe(true);
 
-        done();
+        done(); // eslint-disable-line
       }, 1000);
     });
   });
