@@ -62,7 +62,7 @@ describe('renderTasks', () => {
         const toDoArray = JSON.parse(localStorage.getItem('toDoArray'));
         expect(toDoArray[0].completed).toBe(true);
 
-        done(); // eslint-disable-line
+        // done();
       }, 1000);
     });
   });
